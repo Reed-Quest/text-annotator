@@ -16,6 +16,10 @@
     height: 100%;
 }
 
+.content-block {
+    margin-right: 20px;
+}
+
 p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.2em;
