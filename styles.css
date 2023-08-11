@@ -1,12 +1,8 @@
-.row {
-    height: 500px;
-}
-
 .page-main {
     border-color: black;
     float: left;
     width: 70%;
-    height: 100%;
+    height: fit-content;
 }
 
 .page-sidebar {
