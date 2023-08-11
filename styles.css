@@ -1,6 +1,5 @@
 .row {
     height: 500px;
-    margin: 20px;
 }
 
 .page-main {
@@ -45,7 +44,6 @@ p {
     width: fit-content;
     position: absolute;
     display: block;
-    top: 20px;
     transition-property: top;
     transition-duration: 1s;
     max-width: 250px;
