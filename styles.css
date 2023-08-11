@@ -42,7 +42,7 @@ p {
     display: block;
     transition-property: top;
     transition-duration: 1s;
-    max-width: 250px;
+    max-width: 300px;
     top: 20px;
 }
 
