@@ -24,7 +24,9 @@ for(var i=0;i<elms.length;i++){
         var mid_height = annotation_position.height / 2;
 
         var self_position = this.getBoundingClientRect();
-        var self_y_formatted = self_position.y - mid_height + 10;
+        var self_y_formatted = self_position.y;
+        self_y_formatted += window.scrollY;
+        self_y_formatted = self_y_formatted - mid_height + 10;
 
         self_y_formatted = self_y_formatted.toString();
         self_y_formatted = self_y_formatted.concat("px");
@@ -48,7 +50,9 @@ if (elms.length > 0) {
     var mid_height = annotation_position.height / 2;
 
     var self_position = curr.getBoundingClientRect();
-    var self_y_formatted = self_position.y - mid_height + 10;
+    var self_y_formatted = self_position.y;
+    self_y_formatted += window.scrollY;
+    self_y_formatted = self_y_formatted - mid_height + 10;
 
     self_y_formatted = self_y_formatted.toString();
     self_y_formatted = self_y_formatted.concat("px");

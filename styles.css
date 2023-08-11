@@ -1,15 +1,16 @@
+.row {
+    width: 100%;
+    display: table;
+}
+
 .page-main {
-    border-color: black;
-    float: left;
     width: 70%;
-    height: fit-content;
+    display: table-cell;
 }
 
 .page-sidebar {
-    border-color: black;
-    float: left;
     width: 29%;
-    height: 100%;
+    display: table-cell;
 }
 
 .content-block {
