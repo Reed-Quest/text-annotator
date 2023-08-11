@@ -1,0 +1,56 @@
+.row {
+    height: 500px;
+    margin: 20px;
+}
+
+.page-main {
+    border-color: black;
+    float: left;
+    width: 70%;
+    height: 100%;
+}
+
+.page-sidebar {
+    border-color: black;
+    float: left;
+    width: 29%;
+    height: 100%;
+}
+
+.content-block {
+    margin: 20px;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.note {
+    text-decoration: underline;
+    text-decoration-color: #eb5e28;
+    text-decoration-thickness: 3px;
+}
+
+.note:hover {
+    background-color: lightgrey;
+}
+
+.annotation {
+    border: 0px;
+    border-top: 2px;
+    border-style: solid;
+    border-color: #eb5e28;
+    width: fit-content;
+    position: absolute;
+    display: block;
+    top: 20px;
+    transition-property: top;
+    transition-duration: 1s;
+    max-width: 250px;
+}
+
+.annotation > p {
+    margin-top: 10px;
+}
