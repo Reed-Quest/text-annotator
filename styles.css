@@ -16,13 +16,9 @@
     height: 100%;
 }
 
-.content-block {
-    margin: 20px;
-}
-
 p {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 1em;
+    font-size: 1.2em;
     line-height: 1.5em;
 }
 
@@ -52,4 +48,6 @@ p {
 
 .annotation > p {
     margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2em;
 }
