@@ -34,22 +34,25 @@ for(var i=0;i<elms.length;i++){
     };
 }
 
-annotation.style.transitionDuration = "0s";
+if (elms.length > 0) {
+    annotation.style.transitionDuration = "0s";
 
-var curr = elms[0];
+    var curr = elms[0];
 
-var new_annotation = annotations_dict[curr.textContent];
+    var new_annotation = annotations_dict[curr.textContent];
 
-annot_paragraph.textContent = new_annotation;
+    annot_paragraph.textContent = new_annotation;
 
-var annotation_position = annotation.getBoundingClientRect();
+    var annotation_position = annotation.getBoundingClientRect();
 
-var mid_height = annotation_position.height / 2;
+    var mid_height = annotation_position.height / 2;
 
-var self_position = curr.getBoundingClientRect();
-var self_y_formatted = self_position.y - mid_height + 10;
+    var self_position = curr.getBoundingClientRect();
+    var self_y_formatted = self_position.y - mid_height + 10;
 
-self_y_formatted = self_y_formatted.toString();
-self_y_formatted = self_y_formatted.concat("px");
+    self_y_formatted = self_y_formatted.toString();
+    self_y_formatted = self_y_formatted.concat("px");
 
-annotation.style.top = self_y_formatted;
+    annotation.style.top = self_y_formatted;
+}
+
