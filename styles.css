@@ -47,6 +47,7 @@ p {
     transition-property: top;
     transition-duration: 1s;
     max-width: 250px;
+    top: 20px;
 }
 
 .annotation > p {
