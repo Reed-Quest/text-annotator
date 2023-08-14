@@ -74,6 +74,33 @@ p {
     font-size: 1em;
 }
 
+.footnote {
+    vertical-align: super;
+    font-size: .75em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.footnote:hover {
+    color: #eb5e28;
+}
+
+.footnote-text {
+    border: 0px;
+    border-top: 2px;
+    border-style: solid;
+    border-color: black;
+    display: block;
+}
+
+.footnote-text > p {
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+}
+
+/* mobile adaptation */
+
 @media screen and (min-width: 820px) {
     .annotation {
         width: fit-content;
@@ -140,7 +167,7 @@ p {
                     sit amet ligula ac, elementum vehicula dui. Curabitur ac 
                     nunc vel dui porttitor mattis at sed tellus. Phasellus 
                     quis bibendum orci, vitae scelerisque libero. Cras euismod 
-                    massa sem, et scelerisque nisi semper eget. Aliquam mauris
+                    massa sem, et scelerisque nisi semper eget.<a class="footnote">1</a> Aliquam mauris
                      sem, cursus a ligula ac, sollicitudin varius nisi. Nullam 
                      aliquam justo purus, at sagittis ipsum varius at. Donec in 
                      tincidunt erat, vel elementum diam. Nulla bibendum placerat 
@@ -206,18 +233,28 @@ p {
             'Sed malesuada sed ipsum nec eleifend.': "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
             'lectus dapibus faucibus': "'There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...'"
         };
+
+        var footnotes_dict = {
+            '1': "This is a demo footnote"
+        }
     </script>
 
     <script>
         /* actual script, do not alter */
         var classname = ".note";
+        var footname = ".footnote";
 
         var annot_name = ".annotation";
 
+        var footnote_block_name = ".footnote-text";
+
         var elms=document.querySelectorAll(classname);
+        var footnotes = document.querySelectorAll(footname);
 
         var annotations = document.querySelectorAll(annot_name);
         var annotation = annotations[0];
+
+        var footnote_block = document.querySelector(footnote_block_name);
 
         var annot_paragraph = annotation.querySelector("p");
 
@@ -226,8 +263,37 @@ p {
                 elms[i].onclick = function(){
             
                     annotation.style.transitionDuration = "1s";
+                    annotation.style.borderColor = "#eb5e28";
             
                     var new_annotation = annotations_dict[this.textContent];
+            
+                    annot_paragraph.textContent = new_annotation;
+            
+                    var annotation_position = annotation.getBoundingClientRect();
+            
+                    var mid_height = annotation_position.height / 2;
+            
+                    var self_position = this.getBoundingClientRect();
+                    var self_y_formatted = self_position.y;
+                    self_y_formatted += window.scrollY;
+                    self_y_formatted = self_y_formatted - mid_height + 10;
+            
+                    self_y_formatted = self_y_formatted.toString();
+                    self_y_formatted = self_y_formatted.concat("px");
+            
+                    annotation.style.top = self_y_formatted;
+            
+                };
+            }
+
+            for(var j=0;j<footnotes.length;j++){
+                footnotes[j].onclick = function(){
+            
+                    annotation.style.transitionDuration = "1s";
+                    annotation.style.borderColor = "black";
+            
+                    var new_annotation = footnotes_dict[this.textContent];
+                    new_annotation = this.textContent.concat("."," ",new_annotation);
             
                     annot_paragraph.textContent = new_annotation;
             

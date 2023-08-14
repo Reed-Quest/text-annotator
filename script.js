@@ -27,7 +27,7 @@ if (window.innerWidth > 820) {
             var self_position = this.getBoundingClientRect();
             var self_y_formatted = self_position.y;
             self_y_formatted += window.scrollY;
-            self_y_formatted = self_y_formatted - mid_height + 10;
+            self_y_formatted = self_y_formatted - mid_height;
     
             self_y_formatted = self_y_formatted.toString();
             self_y_formatted = self_y_formatted.concat("px");
@@ -53,7 +53,7 @@ if (window.innerWidth > 820) {
         var self_position = curr.getBoundingClientRect();
         var self_y_formatted = self_position.y;
         self_y_formatted += window.scrollY;
-        self_y_formatted = self_y_formatted - mid_height + 10;
+        self_y_formatted = self_y_formatted - mid_height;
     
         self_y_formatted = self_y_formatted.toString();
         self_y_formatted = self_y_formatted.concat("px");
