@@ -1,0 +1,613 @@
+<!--
+    #Instructions on how to clone this template
+    1. Make a copy of the document with a new filename, never edit this original source.
+    2. Insert your text under row > page-main > content-block. Wrap each new paragraph in 
+        the <p></p> tag, and wrap each phrase to be annotated in the anchor tag <a class="note"></a>.
+        This is demonstrated below. No other modifications to the text are necessary, as the actual
+        annotation process is handled by javascript at the bottom of the page.
+    3. Under the first <script> block, update the annotations dictionary with each desired annotation,
+        using the following format: "'annotated text goes here': 'annotation goes here',"
+        End the dictionary with a semicolon. The dictionary keys must exactly match the text content of the
+        annotated text in the paragraph, and each anchor tag must have exactly one dictionary reference. 
+        Do not create anchor tags without matching dictionary references, or attempt to assign multiple annotations
+        to one annotated phrase.
+    4. Copy and paste this entire document into a custom HTML field in WordPress or the CMS of your choice.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/bb1d08a9b2.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+<style>
+.row {
+    width: 100%;
+    display: table;
+    margin-top: 0px;
+}
+
+.page-main {
+    width: 70%;
+    display: table-cell;
+}
+
+.page-sidebar {
+    width: 29%;
+    display: table-cell;
+}
+
+.content-block {
+    margin-right: 30px;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.note {
+    text-decoration: underline;
+    text-decoration-color: #eb5e28;
+    text-decoration-thickness: 3px;
+}
+
+.note:hover {
+    background-color: lightgrey;
+}
+
+.annotation {
+    border: 0px;
+    border-top: 2px;
+    border-style: solid;
+    border-color: #eb5e28;
+    display: block;
+}
+
+.annotation > p {
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+}
+
+.footnote {
+    vertical-align: super;
+    font-size: .75em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.footnote:hover {
+    color: #eb5e28;
+}
+
+.footnote-text {
+    border: 0px;
+    border-top: 2px;
+    border-style: solid;
+    border-color: black;
+    display: block;
+}
+
+.footnote-text > p {
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+}
+
+/* mobile adaptation */
+
+@media screen and (min-width: 820px) {
+    .annotation {
+        width: fit-content;
+        transition-property: top;
+        transition-duration: 1s;
+        max-width: 300px;
+        top: 20px;
+        position: absolute;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .page-main {
+        width: 100%;
+    }
+
+    .content-block {
+        margin-right: 0px;
+    }
+
+    .annotation {
+        bottom: 0px;
+        width: 100%;
+        left: 0px;
+        background-color: white;
+        box-shadow: 0 2px 6px 2px #666;
+        border-top: 0px;
+        height: fit-content;
+        max-height: 0px;
+        position: fixed;
+        transition-property: "max-height";
+        transition-duration: "1s";
+    }
+
+    .page-sidebar {
+        display: block;
+    }
+
+    .annotation > p {
+        margin-left: 10px;
+        margin-right: 10px;
+        border: 0px;
+        border-top: 2px;
+        border-style: solid;
+        padding-top: 10px;
+        margin-top: 20px;
+        padding-bottom: 50px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <div class="row">
+        <div class="page-main">
+            <div class="content-block">
+                <p>With Reed's early action deadline recently passed on November 1st, the Quest turned to the Supreme Court's June decision on affirmative action to understand the new limits placed on Reed's admissions policies this cycle. It is hard to overestimate the impact of this decision, which Reed VP for Admission and Financial Aid Milyon Trulove recently said "changes the face of our nation." So, rather than briefly summarize such an important document, the Quest is running it in full, alongside annotations from the editorial board – which seek to put the decision in context with recent news articles and details specific to Reed's campus.</p>
+                <p>The following is the full text of the court's majority decision, although the extensive in text citations common to Supreme Court opinions have been removed to promote readability. Where you see <a class="note">a piece of underlined text</a>, click to view an annotation with news context or commentary. Where you see a colored footnote like this one<a class="footnote">0</a>, click to see a footnote from the Justices of the Supreme Court as it appears in the original opinion.</p>
+                <hr>
+                <p>In these cases we consider whether the admissions systems used by Harvard College and the University of North Carolina, two of the oldest institutions of higher learning in the United States, are lawful under the Equal Protection Clause of the Fourteenth Amendment. </p>
+                <h1>I.</h1>
+                <h2>A</h2>
+                <p>Founded in 1636, Harvard College has one of the most selective application processes in the country. 
+                    <a class="note">Over 60,000 people applied to the school last year; fewer than 2,000 were admitted.</a> Gaining admission to Harvard is 
+                    thus no easy feat. It can depend on having excellent grades, glowing recommendation letters, or overcoming significant 
+                    adversity. It can also depend on your race. The admissions process at Harvard works as follows. Every application is 
+                    initially screened by a “first reader,” who assigns scores in six categories: academic, extracurricular, athletic, 
+                    school support, personal, and overall. A rating of “1” is the best; a rating of “6” the worst. In the academic category, 
+                    for example, a “1” signifies “nearperfect standardized test scores and grades”; in the extracurricular category, it 
+                    indicates “truly unusual achievement”; and in the personal category, it denotes “outstanding” attributes like maturity, 
+                    integrity, leadership, kindness, and courage. A score of “1” on the overall rating—a composite of the five other 
+                    ratings— “signifies an exceptional candidate with >90% chance of admission.” In assigning the overall rating, the 
+                    first readers “can and do take an applicant’s race into account.” Once the first read process is complete, Harvard 
+                    convenes admissions subcommittees. Each subcommittee meets for three to five days and evaluates all applicants from 
+                    a particular geographic area. The subcommittees are responsible for making recommendations to the full admissions 
+                    committee. The subcommittees can and do take an applicant’s race into account when making their recommendations. The 
+                    next step of the Harvard process is the full committee meeting. The committee has 40 members, and its discussion 
+                    centers around the applicants who have been recommended by the regional subcommittees. At the beginning of the meeting, 
+                    the committee discusses the relative breakdown of applicants by race. The “goal,” according to Harvard’s director of 
+                    admissions, “is to make sure that [Harvard does] not hav[e] a dramatic drop-off” in minority admissions from the prior 
+                    class. Each applicant considered by the full committee is discussed one by one, and every member of the committee must 
+                    vote on admission. Only when an applicant secures a majority of the full committee’s votes is he or she tentatively 
+                    accepted for admission. At the end of the full committee meeting, the racial composition of the pool of tentatively 
+                    admitted students is disclosed to the committee. The final stage of Harvard’s process is called the “lop,” during 
+                    which the list of tentatively admitted students is winnowed further to arrive at the final class. Any applicants that 
+                    Harvard considers cutting at this stage are placed on a “lop list,” which contains only four pieces of information: 
+                    <a class="note">legacy status, recruited athlete status, financial aid eligibility, and race.</a> The full committee decides as a group 
+                    which students to lop. In doing so, the committee can and does take race into account. Once the lop process is complete, 
+                    Harvard’s admitted class is set. In the Harvard admissions process, “race is a determinative tip for” a significant 
+                    percentage “of all admitted African American and Hispanic applicants.”</p>
+                    <h2>B</h2>
+                    <p>Founded shortly after the Constitution was ratified, the University of North Carolina (UNC) prides itself on being the “nation’s first public university.” Like Harvard, UNC’s “admissions process is highly selective”: In a typical year, the school “receives approximately 43,500 applications for its freshman class of 4,200.” Every application the University receives is initially reviewed by one of approximately 40 admissions office readers, each of whom reviews roughly five applications per hour. Readers are required to consider “[r]ace and ethnicity . . . as one factor” in their review. Other factors include academic performance and rigor, standardized testing results, extracurricular involvement, essay quality, personal factors, and student background. Readers are responsible for providing numerical ratings for the academic, extracurricular, personal, and essay categories. During the years at issue in this litigation, underrepresented minority students were “more likely to score [highly] on their personal ratings than their white and Asian American peers,” but were more likely to be “rated lower by UNC readers on their academic program, academic performance, . . . extracurricular activities,” and essays. After assessing an applicant’s materials along these lines, the reader “formulates an opinion about whether the student should be offered admission” and then “writes a comment defending his or her recommended decision.” In making that decision, readers may offer students a “plus” based on their race, which “may be significant in an individual case.” The admissions decisions made by the first readers are, in most cases, “provisionally final.” Following the first read process, “applications then go to a process called ‘school group review’ . . . where a committee composed of experienced staff members reviews every [initial] decision.” The review committee receives a report on each student which contains, among other things, their “class rank, GPA, and test scores; the ratings assigned to them by their initial readers; and their status as residents, legacies, or special recruits.” The review committee either approves or rejects each admission recommendation made by the first reader, after which the admissions decisions are finalized. In making those decisions, the review committee may also consider the applicant’s race.<a class="footnote">1</a></p>
+                    <h2>C</h2>
+                    <p>Petitioner, Students for Fair Admissions (SFFA), is a nonprofit organization founded in 2014 whose purpose is 
+                        “to defend human and civil rights secured by law, including the right of individuals to equal protection under the 
+                        law.” In November 2014, SFFA filed separate lawsuits against Harvard College and the University of North Carolina, 
+                        arguing that their race-based admissions programs violated, respectively, Title VI of the Civil Rights Act of 1964, 
+                        and the <a class="note">Equal Protection Clause of the Fourteenth Amendment</a><a class="footnote">2</a>. The District Courts in both cases held bench trials to 
+                        evaluate SFFA’s claims. Trial in the Harvard case lasted 15 days and included testimony from 30 witnesses, after which 
+                        the Court concluded that Harvard’s admissions program comported with our precedents on the use of race in college 
+                        admissions. The First Circuit affirmed that determination. Similarly, in the UNC case, the District Court concluded 
+                        after an eight-day trial that UNC’s admissions program was permissible under the Equal Protection Clause. We granted 
+                        certiorari in the Harvard case and certiorari before judgment in the UNC case.</p>
+                <h1>II</h1>
+                <p>Before turning to the merits, we must assure ourselves of our jurisdiction. UNC argues that SFFA lacks standing to bring its claims because it is not a “genuine” membership organization. Article III of the Constitution limits “[t]he judicial power of the United States” to “cases” or “controversies,” ensuring that federal courts act only “as a necessity in the determination of real, earnest and vital” disputes. “To state a case or controversy under Article III, a plaintiff must establish standing.” That, in turn, requires a plaintiff to demonstrate that it has “(1) suffered an injury in fact, (2) that is fairly traceable to the challenged conduct of the defendant, and (3) that is likely to be redressed by a favorable judicial decision.” In cases like these, where the plaintiff is an organization, the standing requirements of Article III can be satisfied in two ways. Either the organization can claim that it suffered an injury in its own right or, alternatively, it can assert “standing solely as the representative of its members.” The latter approach is known as representational or organizational standing. To invoke it, an organization must demonstrate that “(a) its members would otherwise have standing to sue in their own right; (b) the interests it seeks to protect are germane to the organization’s purpose; and (c) neither the claim asserted nor the relief requested requires the participation of individual members in the lawsuit.” Respondents do not contest that SFFA satisfies the threepart test for organizational standing articulated in Hunt, and like the courts below, we find no basis in the record to conclude otherwise. Respondents instead argue that SFFA was not a “genuine ‘membership organization’” when it filed suit, and thus that it could not invoke the doctrine of organizational standing in the first place. According to respondents, our decision in Hunt established that groups qualify as genuine membership organizations only if they are controlled and funded by their members. And because SFFA’s members did neither at the time this litigation commenced, respondents’ argument goes, SFFA could not represent its members for purposes of Article III standing. Hunt involved the Washington State Apple Advertising Commission, a state agency whose purpose was to protect the local apple industry. The Commission brought suit challenging a North Carolina statute that imposed a labeling requirement on containers of apples sold in that State. The Commission argued that it had standing to challenge the requirement on behalf of Washington’s apple industry. We recognized, however, that as a state agency, “the Commission [wa]s not a traditional voluntary membership organization . . . , for it ha[d] no members at all.” As a result, we could not easily apply the three-part test for organizational standing, which asks whether an organization’s members have standing. We nevertheless concluded that the Commission had standing because the apple growers and dealers it represented were effectively members of the Commission. The growers and dealers “alone elect[ed] the members of the Commission,” “alone . . . serve[d] on the Commission,” and “alone finance[d] its activities”—they possessed, in other words, “all of the indicia of membership.” The Commission was therefore a genuine membership organization in substance, if not in form. And it was “clearly” entitled to rely on the doctrine of organizational standing under the three-part test recounted above. The indicia of membership analysis employed in Hunt has no applicability in these cases. Here, SFFA is indisputably a voluntary membership organization with identifiable members—it is not, as in Hunt, a state agency that concededly has no members. As the First Circuit in the Harvard litigation observed, at the time SFFA filed suit, it was “a validly incorporated 501(c)(3) nonprofit with forty-seven members who joined voluntarily to support its mission.” Meanwhile in the UNC litigation, SFFA represented four members in particular—high school graduates who were denied admission to UNC. Those members filed declarations with the District Court stating “that they have voluntarily joined SFFA; they support its mission; they receive updates about the status of the case from SFFA’s President; and they have had the opportunity to have input and direction on SFFA’s case.” Where, as here, an organization has identified members and represents them in good faith, our cases do not require further scrutiny into how the organization operates. Because SFFA complies with the standing requirements demanded of organizational plaintiffs in Hunt, its obligations under Article III are satisfied.</p>
+                <h1>III</h1>
+                <h2>A</h2>
+                <p>In the wake of the Civil War, Congress proposed and the States ratified the Fourteenth Amendment, providing that no State shall “deny to any person . . . the equal protection of the laws.” To its proponents, the Equal Protection Clause represented a “foundation[al] principle”—“the absolute equality of all citizens of the United States politically and civilly before their own laws.” The Constitution, they were determined, “should not permit any distinctions of law based on race or color.” As soon-to-be President James Garfield observed, the Fourteenth Amendment would hold “over every American citizen, without regard to color, the protecting shield of law.” And in doing so, said Senator Jacob Howard of Michigan, the Amendment would give “to the humblest, the poorest, the most despised of the race the same rights and the same protection before the law as it gives to the most powerful, the most wealthy, or the most haughty.” For “[w]ithout this principle of equal justice,” Howard continued, “there is no republican government and none that is really worth maintaining.” At first, this Court embraced the transcendent aims of the Equal Protection Clause. “What is this,” we said of the Clause in 1880, “but declaring that the law in the States shall be the same for the black as for the white; that all persons, whether colored or white, shall stand equal before the laws of the States?” “[T]he broad and benign provisions of the Fourteenth Amendment” apply “to all persons,” we unanimously declared six years later; it is “hostility to . . . race and nationality” “which in the eye of the law is not justified.” Despite our early recognition of the broad sweep of the Equal Protection Clause, this Court—alongside the country—quickly failed to live up to the Clause’s core commitments. For almost a century after the Civil War, statemandated segregation was in many parts of the Nation a regrettable norm. This Court played its own role in that ignoble history, allowing in Plessy v. Ferguson the separate but equal regime that would come to deface much of America. The aspirations of the framers of the Equal Protection Clause, “[v]irtually strangled in [their] infancy,” would remain for too long only that—aspirations. After Plessy, “American courts . . . labored with the doctrine [of separate but equal] for over half a century.” Some cases in this period attempted to curtail the perniciousness of the doctrine by emphasizing that it required States to provide black students educational opportunities equal to—even if formally separate from—those enjoyed by white students. But the inherent folly of that approach—of trying to derive equality from inequality—soon became apparent. As the Court subsequently recognized, even racial distinctions that were argued to have no palpable effect worked to subordinate the afflicted students. By 1950, the inevitable truth of the Fourteenth Amendment had thus begun to reemerge: Separate cannot be equal. The culmination of this approach came finally in Brown v. Board of Education. In that seminal decision, we overturned Plessy for good and set firmly on the path of invalidating all de jure racial discrimination by the States and Federal Government. Brown concerned the permissibility of racial segregation in public schools. The school district maintained that such segregation was lawful because the schools provided to black students and white students were of roughly the same quality. But we held such segregation impermissible “even though the physical facilities and other ‘tangible’ factors may be equal.” The mere act of separating “children . . . because of their race,” we explained, itself “generate[d] a feeling of inferiority.” The conclusion reached by the Brown Court was thus unmistakably clear: the right to a public education “must be made available to all on equal terms.” As the plaintiffs had argued, “no State has any authority under the equal-protection clause of the Fourteenth Amendment to use race as a factor in affording educational opportunities among its citizens.” The Court reiterated that rule just one year later, holding that “full compliance” with Brown required schools to admit students “on a racially nondiscriminatory basis.” The time for making distinctions based on race had passed. Brown, the Court observed, “declar[ed] the fundamental principle that racial discrimination in public education is unconstitutional.” So too in other areas of life. Immediately after Brown, we began routinely affirming lower court decisions that invalidated all manner of race-based state action. In Gayle v. Browder, for example, we summarily affirmed a decision invalidating state and local laws that required segregation in busing. As the lower court explained, “[t]he equal protection clause requires equality of treatment before the law for all persons without regard to race or color.” And in Mayor and City Council of Baltimore v. Dawson, we summarily affirmed a decision striking down racial segregation at public beaches and bathhouses maintained by the State of Maryland and the city of Baltimore. “It is obvious that racial segregation in recreational activities can no longer be sustained,” the lower court observed. “[T]he ideal of equality before the law which characterizes our institutions” demanded as much. In the decades that followed, this Court continued to vindicate the Constitution’s pledge of racial equality. Laws dividing parks and golf courses; neighborhoods and businesses; buses and trains; schools and juries were undone, all by a transformative promise “stemming from our American ideal of fairness”: “ ’the Constitution . . . forbids . . . discrimination by the General Government, or by the States, against any citizen because of his race.’ ” As we recounted in striking down the State of Virginia’s ban on interracial marriage 13 years after Brown, the Fourteenth Amendment “proscri[bes] . . . all invidious racial discriminations.” Our cases had thus “consistently denied the constitutionality of measures which restrict the rights of citizens on account of race.” These decisions reflect the “core purpose” of the Equal Protection Clause: “do[ing] away with all governmentally imposed discrimination based on race.” We have recognized that repeatedly. “The clear and central purpose of the Fourteenth Amendment was to eliminate all official state sources of invidious racial discrimination in the States.” Loving, 388; see also Washington v. Davis, (1976) (“The central purpose of the Equal Protection Clause of the Fourteenth Amendment is the prevention of official conduct discriminating on the basis of race.”); McLaughlin v. Florida, (1964) (“[T]he historical fact [is] that the central purpose of the Fourteenth Amendment was to eliminate racial discrimination.”).</p>
+                <p><a class="note">Eliminating racial discrimination means eliminating all of it.</a> And the Equal Protection Clause, we have accordingly held, 
+                    applies “without regard to any differences of race, of color, or of nationality”—it is “universal in [its] application.” 
+                    For “[t]he guarantee of equal protection cannot mean one thing when applied to one individual and something else when 
+                    applied to a person of another color.” “If both are not accorded the same protection, then it is not equal.” Any exception 
+                    to the Constitution’s demand for equal protection must survive a daunting two-step examination known in our cases as 
+                    “strict scrutiny.” Under that standard we ask, first, whether the racial classification is used to “further compelling 
+                    governmental interests.” Second, if so, we ask whether the government’s use of race is “narrowly tailored”—meaning 
+                    “necessary”—to achieve that interest. Outside the circumstances of these cases, our precedents have identified only two 
+                    compelling interests that permit resort to race-based government action. One is remediating specific, identified instances 
+                    of past discrimination that violated the Constitution or a statute. The second is avoiding imminent and serious risks to 
+                    human safety in prisons, such as a race riot.<a class="footnote">3</a></p>
+                <p>Our acceptance of race-based state action has been rare for a reason. “Distinctions between citizens solely because of their ancestry are by their very nature odious to a free people whose institutions are founded upon the doctrine of equality.” That principle cannot be overridden except in the most extraordinary case.</p>
+                <h2>B</h2>
+                <p>These cases involve whether a university may make admissions decisions that turn on an applicant’s race. Our Court first considered that issue in Regents of University of California v. Bakke, which involved a set-aside admissions program used by the University of California, Davis, medical school. Each year, the school held 16 of its 100 seats open for members of certain minority groups, who were reviewed on a special admissions track separate from those in the main admissions pool.</p>
+                <p>The plaintiff, Allan Bakke, was denied admission two years in a row, despite the admission of minority applicants with lower 
+                    grade point averages and MCAT scores. Bakke subsequently sued the school, arguing that its set-aside program violated the 
+                    Equal Protection Clause. In a deeply splintered decision that produced six different opinions—none of which commanded a 
+                    majority of the Court—we ultimately ruled in part in favor of the school and in part in favor of Bakke. Justice Powell 
+                    announced the Court’s judgment, and his opinion—though written for himself alone—would eventually come to “serv[e] as the 
+                    touchstone for constitutional analysis of race-conscious admissions policies.” Justice Powell began by finding three of the 
+                    school’s four justifications for its policy not sufficiently compelling. The school’s first justification of “reducing the 
+                    historic deficit of traditionally disfavored minorities in medical schools,” he wrote, was akin to “[p]referring members 
+                    of any one group for no reason other than race or ethnic origin.” Yet that was “discrimination for its own sake,” which 
+                    “the Constitution forbids.” Justice Powell next observed that the goal of “remedying . . . the effects of ‘societal 
+                    discrimination’” was also insufficient because it was “an amorphous concept of injury that may be ageless in its reach 
+                    into the past.” Finally, Justice Powell found there was “virtually no evidence in the record indicating that [the school’s] 
+                    special admissions program” would, as the school had argued, increase the number of doctors working in underserved areas. 
+                    Justice Powell then turned to the school’s last interest asserted to be compelling—obtaining the educational benefits that 
+                    flow from a racially diverse student body. That interest, in his view, was “a constitutionally permissible goal for an 
+                    institution of higher education.” And that was so, he opined, because a university was entitled as a matter of academic 
+                    freedom “to make its own judgments as to . . . the selection of its student body.” But a university’s freedom was not 
+                    unlimited. “Racial and ethnic distinctions of any sort are inherently suspect,” Justice Powell explained, and antipathy 
+                    toward them was deeply “rooted in our Nation’s constitutional and demographic history.” A university could not employ a 
+                    quota system, for example, reserving “a specified number of seats in each class for individuals from the preferred ethnic 
+                    groups.” Nor could it impose a “multitrack program with a prescribed number of seats set aside for each identifiable 
+                    category of applicants.” And neither still could it use race to foreclose an individual “from all consideration . . . 
+                    simply because he was not the right color.” The role of race had to be cabined. It could operate only as “a ‘plus’ in a 
+                    particular applicant’s file.” And even then, race was to be weighed in a manner “flexible enough to consider all <a class="note">pertinent elements of diversity</a> in light of the particular qualifications of each applicant.” Justice Powell derived this approach 
+                    from what he called the “illuminating example” of the admissions system then used by Harvard College. Under that system, 
+                    as described by Harvard in a brief it had filed with the Court, “the race of an applicant may tip the balance in his favor 
+                    just as <a class="note">geographic origin</a> or a life [experience] may tip the balance in other candidates’ cases.” Harvard continued: 
+                    “<a class="note">A farm boy from Idaho can bring something to Harvard College that a Bostonian cannot offer.</a> Similarly, a black student 
+                    can usually bring something that a white person cannot offer.” The result, Harvard proclaimed, was that “race has 
+                    been”—and should be—“a factor in some admission decisions.” No other Member of the Court joined Justice Powell’s opinion. 
+                    <a class="note">Four Justices</a> instead would have held that the government may use race for the purpose of “remedying the effects of past 
+                    societal discrimination.” <a class="note">Four other Justices</a>, meanwhile, would have struck down the Davis program as violative of Title 
+                    VI. In their view, it “seem[ed] clear that the proponents of Title VI assumed that the Constitution itself required a 
+                    colorblind standard on the part of government.” The Davis program therefore flatly contravened a core “principle imbedded 
+                    in the constitutional and moral understanding of the times”: the prohibition against “racial discrimination.” </p>
+                    <h2>C</h2>
+                    <p>In the years that followed our “fractured decision in Bakke,” lower courts “struggled to discern whether Justice Powell’s” 
+                        opinion constituted “binding precedent.” We accordingly took up the matter again in 2003, in the case Grutter v. Bollinger, 
+                        which concerned the admissions system used by the University of Michigan law school. There, in another sharply divided 
+                        decision, the Court for the first time “<a class="note">endorse[d] Justice Powell’s view that student body diversity is a compelling state interest that can justify the use of race in university admissions.</a>” The Court’s analysis tracked Justice Powell’s 
+                        in many respects. As for compelling interest, the Court held that “[t]he Law School’s educational judgment that such 
+                        diversity is essential to its educational mission is one to which we defer.” In achieving that goal, however, the Court 
+                        made clear—just as Justice Powell had—that the law school was limited in the means that it could pursue. The school 
+                        could not “establish quotas for members of certain racial groups or put members of those groups on separate admissions 
+                        tracks.” Neither could it “insulate applicants who belong to certain racial or ethnic groups from the competition for 
+                        admission.” Nor still could it desire “some specified percentage of a particular group merely because of its race or 
+                        ethnic origin.” These limits, Grutter explained, were intended to guard against two dangers that all race-based government 
+                        action portends. The first is the risk that the use of race will devolve into “illegitimate . . . stereotyp[ing].” 
+                        Universities were thus not permitted to operate their admissions programs on the “belief that minority students always 
+                        (or even consistently) express some characteristic minority viewpoint on any issue.” The second risk is that race would 
+                        be used not as a plus, but as a negative—to discriminate against those racial groups that were not the beneficiaries of 
+                        the race-based preference. A university’s use of race, accordingly, could not occur in a manner that “unduly harm[ed] 
+                        nonminority applicants.” But even with these constraints in place, Grutter expressed marked discomfort with the use of 
+                        race in college admissions. The Court stressed the fundamental principle that “there are serious problems of justice 
+                        connected with the idea of [racial] preference itself.” It observed that all “racial classifications, however compelling 
+                        their goals,” were “dangerous.” And it cautioned that all “race-based governmental action” should “remai[n] subject to 
+                        continuing oversight to assure that it will work the least harm possible to other innocent persons competing for the benefit.” 
+                        To manage these concerns, Grutter imposed one final limit on race-based admissions programs. At some point, the Court held, 
+                        they must end. This requirement was critical, and Grutter emphasized it repeatedly. “<a class="note">[A]ll race-conscious admissions programs [must] have a termination point</a>”; they “must have reasonable durational limits”; they “must be limited in time”; 
+                        they must have “sunset provisions”; they “must have a logical end point”; their “deviation from the norm of equal treatment” 
+                        must be “a temporary matter.” The importance of an end point was not just a matter of repetition. It was the reason the 
+                        Court was willing to dispense temporarily with the Constitution’s unambiguous guarantee of equal protection. The Court 
+                        recognized as much: “[e]nshrining a permanent justification for racial preferences,” the Court explained, “would offend 
+                        this fundamental equal protection principle.” Grutter thus concluded with the following caution: “It has been 25 years 
+                        since Justice Powell first approved the use of race to further an interest in student body diversity in the context of 
+                        public higher education. . . . <a class="note">We expect that 25 years from now, the use of racial preferences will no longer be necessary to further the interest approved today.</a>”</p>
+                    <h1>IV</h1>
+                    <p>Twenty years later, no end is in sight. “Harvard’s view about when [race-based admissions will end] doesn’t have a 
+                        date on it.” Neither does UNC’s. Yet both insist that the use of race in their admissions programs must continue. 
+                        But we have permitted race-based admissions only within the confines of narrow restrictions. <a class="note">University programs must comply with strict scrutiny, they may never use race as a stereotype or negative, and—at some point—they must end. Respondents’ admissions systems—however well intentioned and implemented in good faith—fail each of these criteria. They must therefore be invalidated under the Equal Protection Clause of the Fourteenth Amendment.</a><a class="footnote">4</a></p>
+                    <h2>A</h2>
+                    <p>Because “[r]acial discrimination [is] invidious in all contexts,” we have required that universities operate their race-based admissions programs in a manner that is “sufficiently measurable to permit judicial [review]” under the rubric of strict scrutiny. “Classifying and assigning” students based on their race “requires more than . . . an amorphous end to justify it.” Respondents have fallen short of satisfying that burden.</p>
+                    <p>First, the interests they view as compelling cannot be subjected to meaningful judicial review. Harvard identifies the 
+                        following educational benefits that it is pursuing: (1) “training future leaders in the public and private sectors”; 
+                        (2) preparing graduates to “adapt to an increasingly pluralistic society”; (3) “better educating its students through 
+                        diversity”; and (4) “producing new knowledge stemming from diverse outlooks.” UNC points to similar benefits, namely, 
+                        “(1) promoting the robust exchange of ideas; (2) broadening and refining understanding; (3) fostering innovation and 
+                        problem-solving; (4) preparing engaged and productive citizens and leaders; [and] (5) enhancing appreciation, respect, 
+                        and empathy, cross-racial understanding, and breaking down stereotypes.” Although these are commendable goals, they are 
+                        not sufficiently coherent for purposes of strict scrutiny. At the outset, it is unclear how courts are supposed to 
+                        measure any of these goals. How is a court to know whether leaders have been adequately “train[ed]”; whether the 
+                        exchange of ideas is “robust”; or whether “new knowledge” is being developed? Even if these goals could somehow be 
+                        measured, moreover, how is a court to know when they have been reached, and when the perilous remedy of racial 
+                        preferences may cease? There is no particular point at which there exists sufficient “innovation and problem solving,” 
+                        or students who are appropriately “engaged and productive.” Finally, the question in this context is not one of no 
+                        diversity or of some: it is a question of degree. <a class="note">How many fewer leaders Harvard would create without racial preferences, or how much poorer the education at Harvard would be, are inquiries no court could resolve.</a> Comparing 
+                        respondents’ asserted goals to interests we have recognized as compelling further illustrates their elusive nature. 
+                        In the context of racial violence in a prison, for example, courts can ask whether temporary racial segregation of 
+                        inmates will prevent harm to those in the prison. When it comes to workplace discrimination, courts can ask whether 
+                        a race-based benefit makes members of the discriminated class “whole for [the] injuries [they] suffered.” And in 
+                        school segregation cases, courts can determine whether any race-based remedial action produces a distribution of 
+                        students “compar[able] to what it would have been in the absence of such constitutional violations.” Nothing like 
+                        that is possible when it comes to evaluating the interests respondents assert here. Unlike discerning whether a 
+                        prisoner will be injured or whether an employee should receive backpay, the question whether a particular mix of 
+                        minority students produces “engaged and productive citizens,” sufficiently “enhance[s] appreciation, respect, and 
+                        empathy,” or effectively “train[s] future leaders” is standardless. The interests that respondents seek, though 
+                        plainly worthy, are inescapably imponderable. Second, respondents’ admissions programs fail to articulate a 
+                        meaningful connection between the means they employ and the goals they pursue. To achieve the educational benefits 
+                        of diversity, UNC works to avoid the underrepresentation of minority groups, while Harvard likewise “guard[s ] 
+                        against inadvertent drop-offs in representation” of certain minority groups from year to year. To accomplish both 
+                        of those goals, in turn, the universities measure the racial composition of their classes using the following 
+                        categories: <a class="note">(1) Asian; (2) Native Hawaiian or Pacific Islander; (3) Hispanic; (4) White; (5) African American; and (6) Native American.</a></p>
+                        <p>It is far from evident, though, how assigning students to these racial categories and making admissions 
+                            decisions based on them furthers the educational benefits that the universities claim to pursue. For 
+                            starters, the categories are themselves imprecise in many ways. Some of them are plainly overbroad: by grouping 
+                            together all Asian students, for instance, respondents are apparently uninterested in whether South Asian or 
+                            East Asian students are adequately represented, so long as there is enough of one to compensate for a lack 
+                            of the other. Meanwhile other racial categories, such as “Hispanic,” are arbitrary or undefined. <a class="note">And still other categories are underinclusive. When asked at oral argument “how are applicants from Middle Eastern countries classified, [such as] Jordan, Iraq, Iran, [and] Egypt,” UNC’s counsel responded, “[I] do not know the answer to that question.”</a> Indeed, the use of these opaque racial categories undermines, instead 
+                            of promotes, respondents’ goals. By focusing on underrepresentation, respondents would apparently prefer 
+                            a class with 15% of students from Mexico over a class with 10% of students from several Latin American 
+                            countries, simply because the former contains more Hispanic students than the latter. Yet “[i]t is hard 
+                            to understand how a plan that could allow these results can be viewed as being concerned with achieving 
+                            enrollment that is ’broadly diverse.’” And given the mismatch between the means respondents employ and 
+                            the goals they seek, it is especially hard to understand how courts are supposed to scrutinize the admissions 
+                            programs that respondents use. The universities’ main response to these criticisms is, essentially, “trust us.” 
+                            None of the questions recited above need answering, they say, because universities are “owed deference” 
+                            when using race to benefit some applicants but not others. It is true that our cases have recognized a 
+                            “tradition of giving a degree of deference to a university’s academic decisions.” But we have been unmistakably 
+                            clear that any deference must exist “within constitutionally prescribed limits,” and that “deference does 
+                            not imply abandonment or abdication of judicial review.” Universities may define their missions as they 
+                            see fit. The Constitution defines ours. Courts may not license separating students on the basis of race 
+                            without an exceedingly persuasive justification that is measurable and concrete enough to permit judicial 
+                            review. As this Court has repeatedly reaffirmed, “[r]acial classifications are simply too pernicious to 
+                            permit any but the most exact connection between justification and classification.” The programs at issue 
+                            here do not satisfy that standard.<a class="footnote">5</a></p>
+                        <p>The race-based admissions systems that respondents employ also fail to comply with the twin commands of the Equal Protection Clause that race may never be used as a “negative” and that it may not operate as a stereotype. First, our cases have stressed that an individual’s race may never be used against him in the admissions process. Here, however, the First Circuit found that Harvard’s consideration of race has led to an 11.1% decrease in the number of Asian-Americans admitted to Harvard. And the District Court observed that Harvard’s “policy of considering applicants’ race . . . overall results in fewer Asian American and white students being admitted.” Respondents nonetheless contend that an individual’s race is never a negative factor in their admissions programs, but that assertion cannot withstand scrutiny. Harvard, for example, draws an analogy between race and other factors it considers in admission. “[W]hile admissions officers may give a preference to applicants likely to excel in the Harvard-Radcliffe Orchestra,” Harvard explains, “that does not mean it is a ‘negative’ not to excel at a musical instrument.” But on Harvard’s logic, while it gives preferences to applicants with high grades and test scores, “that does not mean it is a ‘negative’” to be a student with lower grades and lower test scores. This understanding of the admissions process is hard to take seriously. College admissions are zero-sum. A benefit provided to some applicants but not to others necessarily advantages the former group at the expense of the latter. Respondents also suggest that race is not a negative factor because it does not impact many admissions decisions. Yet, at the same time, respondents also maintain that the demographics of their admitted classes would meaningfully change if race-based admissions were abandoned. And they acknowledge that race is determinative for at least some—if not many—of the students they admit. How else but “negative” can race be described if, in its absence, members of some racial groups would be admitted in greater numbers than they otherwise would have been? The “[e]qual protection of the laws is not achieved through indiscriminate imposition of inequalities.”<a class="footnote">6</a></p>
+                        <p>Yet by accepting race-based admissions programs in which some students may obtain preferences on the basis of race alone, respondents’ programs tolerate the very thing that Grutter foreswore: stereotyping. The point of respondents’ admissions programs is that there is an inherent benefit in race qua race—in race for race’s sake. Respondents admit as much. Harvard’s admissions process rests on the pernicious stereotype that “a black student can usually bring something that a white person cannot offer.” UNC is much the same. It argues that race in itself “says [something] about who you are.” We have time and again forcefully rejected the notion that government actors may intentionally allocate preference to those “who may have little in common with one another but the color of their skin.” The entire point of the Equal Protection Clause is that treating someone differently because of their skin color is not like treating them differently because they are from a city or from a suburb, or because they play the violin poorly or well. “One of the principal reasons race is treated as a forbidden classification is that it demeans the dignity and worth of a person to be judged by ancestry instead of by his or her own merit and essential qualities.” But when a university admits students “on the basis of race, it engages in the offensive and demeaning assumption that [students] of a particular race, because of their race, think alike,” —at the very least alike in the sense of being different from nonminority students. In doing so, the university furthers “stereotypes that treat individuals as the product of their race, evaluating their thoughts and efforts—their very worth as citizens—according to a criterion barred to the Government by history and the Constitution.” Such stereotyping can only “cause[] continued hurt and injury,” contrary as it is to the “core purpose” of the Equal Protection Clause.</p>
+                        <h2>C</h2>
+                        <p>If all this were not enough, respondents’ admissions programs also lack a “logical end point.” Respondents and the Government first suggest that respondents’ race-based admissions programs will end when, in their absence, there is “meaningful representation and meaningful diversity” on college campuses. The metric of meaningful representation, respondents assert, does not involve any “strict numerical benchmark,” or “precise number or percentage,” or “specified percentage.” So what does it involve? Numbers all the same. At Harvard, each full committee meeting begins with a discussion of “how the breakdown of the class compares to the prior year in terms of racial identities.” And “if at some point in the admissions process it appears that a group is notably underrepresented or has suffered a dramatic drop off relative to the prior year, the Admissions Committee may decide to give additional attention to applications from students within that group.” See also id., at 147 (District Court finding that Harvard uses race to “trac[k] how each class is shaping up relative to previous years with an eye towards achieving a level of racial diversity”)</p>
+                        <p>The results of the Harvard admissions process reflect this numerical commitment. For the admitted classes of 2009 to 2018, black students represented a tight band of 10.0%– 11.7% of the admitted pool. The same theme held true for other minority groups: Harvard’s focus on numbers is obvious.<a class="footnote">7</a></p>
+                        <p>UNC’s admissions program operates similarly. The University frames the challenge it faces as “the admission and enrollment of underrepresented minorities,” a metric that turns solely on whether a group’s “percentage enrollment within the undergraduate student body is lower than their percentage within the general population in North Carolina.” The University “has not yet fully achieved its diversity-related educational goals,” it explains, in part due to its failure to obtain closer to proportional representation. The problem with these approaches is well established. “[O]utright racial balancing” is “patently unconstitutional.” That is so, we have repeatedly explained, because “[a]t the heart of the Constitution’s guarantee of equal protection lies the simple command that the Government must treat citizens as individuals, not as simply components of a racial, religious, sexual or national class.” By promising to terminate their use of race only when some rough percentage of various racial groups is admitted, respondents turn that principle on its head. Their admissions programs “effectively assure[ ] that race will always be relevant . . . and that the ultimate goal of eliminating” race as a criterion “will never be achieved.”</p>
+                        <p>Respondents’ second proffered end point fares no better. Respondents assert that universities will no longer need to engage in race-based admissions when, in their absence, students nevertheless receive the educational benefits of diversity. But as we have already explained, it is not clear how a court is supposed to determine when stereotypes have broken down or “productive citizens and leaders” have been created. Nor is there any way to know whether those goals would adequately be met in the absence of a race-based admissions program. As UNC itself acknowledges, these “qualitative standard[s]” are “difficult to measure.” Third, respondents suggest that race-based preferences must be allowed to continue for at least five more years, based on the Court’s statement in Grutter that it “expect[ed] that 25 years from now, the use of racial preferences will no longer be necessary.” The 25-year mark articulated in Grutter, however, reflected only that Court’s view that race-based preferences would, by 2028, be unnecessary to ensure a requisite level of racial diversity on college campuses. That expectation was oversold. Neither Harvard nor UNC believes that racebased admissions will in fact be unnecessary in five years, and both universities thus expect to continue using race as a criterion well beyond the time limit that Grutter suggested. Indeed, the high school applicants that Harvard and UNC will evaluate this fall using their race-based admissions systems are expected to graduate in 2028—25 years after Grutter was decided. Finally, respondents argue that their programs need not have an end point at all because they frequently review them to determine whether they remain necessary. Respondents point to language in Grutter that, they contend, permits “the durational requirement [to] be met” with “periodic reviews to determine whether racial preferences are still necessary to achieve student body diversity.” But Grutter never suggested that periodic review could make unconstitutional conduct constitutional. To the contrary, the Court made clear that race-based admissions programs eventually had to end—despite whatever periodic review universities conducted. Here, however, Harvard concedes that its race-based admissions program has no end point. And it acknowledges that the way it thinks about the use of race in its admissions process “is the same now as it was” nearly 50 years ago. UNC’s race-based admissions program is likewise not set to expire any time soon—nor, indeed, any time at all. The University admits that it “has not set forth a proposed time period in which it believes it can end all race-conscious admissions practices.” And UNC suggests that it might soon use race to a greater extent than it currently does. In short, there is no reason to believe that respondents will—even acting in good faith—comply with the Equal Protection Clause any time soon.</p>
+                        <h1>V</h1>
+                        <p>The dissenting opinions resist these conclusions. They would instead uphold respondents’ admissions programs 
+                            based on their view that the Fourteenth Amendment permits state actors to remedy the effects of societal 
+                            discrimination through explicitly race-based measures. Although both opinions are thorough and thoughtful in 
+                            many respects, this Court has long rejected their core thesis. The dissents’ interpretation of the Equal 
+                            Protection Clause is not new. In Bakke, four Justices would have permitted race-based admissions programs to 
+                            remedy the effects of societal discrimination. <a class="note">But that minority view was just that—a minority view.</a> Justice 
+                            Powell, who provided the fifth vote and controlling opinion in Bakke, firmly rejected the notion that societal 
+                            discrimination constituted a compelling interest. Such an interest presents “an amorphous concept of injury 
+                            that may be ageless in its reach into the past,” he explained. It cannot “justify a [racial] classification 
+                            that imposes disadvantages upon persons . . . who bear no responsibility for whatever harm the beneficiaries 
+                            of the [race-based] admissions program are thought to have suffered.” The Court soon adopted Justice Powell’s 
+                            analysis as its own. In the years after Bakke, the Court repeatedly held that ameliorating societal discrimination 
+                            does not constitute a compelling interest that justifies race-based state action. “[A]n effort to alleviate 
+                            the effects of societal discrimination is not a compelling interest,” we said plainly in Hunt, a 1996 case 
+                            about the Voting Rights Act. We reached the same conclusion in Croson, a case that concerned a preferential 
+                            government contracting program. Permitting “past societal discrimination” to “serve as the basis for rigid 
+                            racial preferences would be to open the door to competing claims for ‘remedial relief’ for every disadvantaged 
+                            group.” Opening that door would shutter another—“[t]he dream of a Nation of equal citizens . . . would be 
+                            lost,” we observed, “in a mosaic of shifting preferences based on inherently unmeasurable claims of past 
+                            wrongs.” “[S]uch a result would be contrary to both the letter and spirit of a constitutional provision whose 
+                            central command is equality.” The dissents here do not acknowledge any of this. They fail to cite Hunt. 
+                            They fail to cite Croson. They fail to mention that the entirety of their analysis of the Equal Protection 
+                            Clause—the statistics, the cases, the history—has been considered and rejected before. There is a reason the 
+                            principal dissent must invoke Justice Marshall’s partial dissent in Bakke nearly a dozen times while 
+                            mentioning Justice Powell’s controlling opinion barely once (JUSTICE JACKSON’s opinion ignores Justice 
+                            Powell altogether). For what one dissent denigrates as “rhetorical flourishes about colorblindness,” 
+                            (opinion of SOTOMAYOR, J.), are in fact the proud pronouncements of cases like Loving and Yick Wo, like 
+                            Shelley and Bolling—they are defining statements of law. We understand the dissents want that law to be 
+                            different. They are entitled to that desire. But they surely cannot claim the mantle of stare decisis 
+                            while pursuing it.<a class="footnote">8</a> The dissents are no more faithful to our precedent on race-based admissions. To hear 
+                            the principal dissent tell it, Grutter blessed such programs indefinitely, until “racial inequality will 
+                            end.” (opinion of SOTOMAYOR, J.). But Grutter did no such thing. It emphasized—not once or twice, but 
+                            at least six separate times—that race-based admissions programs “must have reasonable durational limits” 
+                            and that their “deviation from the norm of equal treatment” must be “a temporary matter.”</p>
+                        <p>The Court also disclaimed “[e]nshrining a permanent justification for racial preferences.” Yet the 
+                            justification for race-based admissions that the dissent latches on to is just that—unceasing. The 
+                            principal dissent’s reliance on Fisher II is similarly mistaken. There, by a 4-to-3 vote, the Court 
+                            upheld a “sui generis” race-based admissions program used by <a class="note">the University of Texas, whose “goal” it was to enroll a “critical mass” of certain minority students.</a> But neither Harvard nor UNC claims 
+                            to be using the critical mass concept—indeed, the universities admit they do not even know what it 
+                            means. (“[N]o one has directed anybody to achieve a critical mass, and I’m not even sure we would know what it is.” 
+                            (testimony of UNC administrator). Fisher II also recognized the “enduring challenge” that race-based 
+                            admissions systems place on “the constitutional promise of equal treatment.” The Court thus reaffirmed 
+                            the “continuing obligation” of universities “to satisfy the burden of strict scrutiny.” To drive the 
+                            point home, Fisher II limited itself just as Grutter had—in duration. The Court stressed that its 
+                            decision did “not necessarily mean the University may rely on the same policy” going forward. And the 
+                            Court openly acknowledged that its decision offered limited “prospective guidance.”<a class="footnote">9</a> The principal 
+                            dissent wrenches our case law from its context, going to lengths to ignore the parts of that law it
+                            does not like. The serious reservations that Bakke, Grutter, and Fisher had about racial preferences 
+                            go unrecognized. The unambiguous requirements of the Equal Protection Clause—“the most rigid,” 
+                            “searching” scrutiny it entails— go without note. And the repeated demands that race-based admissions 
+                            programs must end go overlooked—contorted, worse still, into a demand that such programs never stop. 
+                            Most troubling of all is what the dissent must make these omissions to defend: a judiciary that picks 
+                            winners and losers based on the color of their skin. While the dissent would certainly not permit 
+                            university programs that discriminated against black and Latino applicants, it is perfectly willing 
+                            to let the programs here continue. In its view, this Court is supposed to tell state actors when 
+                            they have picked the right races to benefit. <a class="note">Separate but equal is “inherently unequal,” said Brown. It depends, says the dissent.</a></p>
+                            <p>That is a remarkable view of the judicial role—remarkably wrong. Lost in the false pretense of judicial humility that the dissent espouses is a claim to power so radical, so destructive, that it required a Second Founding to undo. “Justice Harlan knew better,” one of the dissents decrees. (opinion of JACKSON, J.) Indeed he did: “[I]n view of the Constitution, in the eye of the law, there is in this country no superior, dominant, ruling class of citizens. There is no caste here. Our Constitution is color-blind, and neither knows nor tolerates classes among citizens.” Plessy, (Harlan, J., dissenting).</p>
+                            <h1>VI</h1>
+                            <p>For the reasons provided above, the Harvard and UNC admissions programs cannot be reconciled with the 
+                                guarantees of the Equal Protection Clause. Both programs lack sufficiently focused and measurable 
+                                objectives warranting the use of race, unavoidably employ race in a negative manner, involve racial 
+                                stereotyping, and lack meaningful end points. We have never permitted admissions programs to work in 
+                                that way, and we will not do so today. <a class="note">At the same time, as all parties agree, nothing in this opinion should be construed as prohibiting universities from considering an applicant’s discussion of how race affected his or her life, be it through discrimination, inspiration, or otherwise.</a> 
+                                But, despite the dissent’s assertion to the contrary, <a class="note">universities may not simply establish through application essays or other means the regime we hold unlawful today.</a> (A dissenting opinion 
+                                is generally not the best source of legal advice on how to comply with the majority opinion.) 
+                                “[W]hat cannot be done directly cannot be done indirectly. The Constitution deals with substance, 
+                                not shadows,” and the prohibition against racial discrimination is “levelled at the thing, not the 
+                                name.” Cummings v. Missouri (1867). A benefit to a student who overcame racial discrimination, for 
+                                example, must be tied to that student’s courage and determination. Or a benefit to a student whose 
+                                heritage or culture motivated him or her to assume a leadership role or attain a particular goal 
+                                must be tied to that student’s unique ability to contribute to the university. In other words, the 
+                                student must be treated based on his or her experiences as an individual—not on the basis of race. 
+                                Many universities have for too long done just the opposite. And in doing so, they have concluded, 
+                                wrongly, that the touchstone of an individual’s identity is not challenges bested, skills built, or 
+                                lessons learned but the color of their skin. Our constitutional history does not tolerate that choice. 
+                                The judgments of the Court of Appeals for the First Circuit and of the District Court for the Middle 
+                                District of North Carolina are reversed. It is so ordered. JUSTICE JACKSON took no part in the 
+                                consideration or decision of the case.</p>
+            </div>
+        </div>
+        <div class="page-sidebar">
+            <div class="annotation">
+                <p>Hello world</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* annotations dictionary */
+        var annotations_dict = {
+            'Over 60,000 people applied to the school last year; fewer than 2,000 were admitted.': "The exact numbers for 2021 (according to data released by the National Center for Education Statistics) were 57786 and 2318, for an admission rate of 4% — almost exactly a tenth of Reed's 43.8% admission rate that same year.",
+            'legacy status, recruited athlete status, financial aid eligibility, and race.':"While the Supreme Court focused only on race, all four of these considerations could face future legal challenges. The Department of Education launched a federal civil rights inquiry into Harvard's use of legacy admissions almost immediately after this ruling took effect, and colleges across the country have long been criticized for considering wealth and athlete status. In 2009, the New York Times quoted then Reed Financial Aid Director Leslie Limper as saying, “Sometimes I wonder why I’m still doing this,” after the college struck 100 students needing financial aid from its acceptance list and replaced them with students paying full tuition in order to protect the financial interests of the institution.",
+            'Equal Protection Clause of the Fourteenth Amendment':"The original text of Section 1 of the Fourteenth Amendment reads: 'No State shall make or enforce any law which shall abridge the privileges or immunities of citizens of the United States; nor shall any State deprive any person of life, liberty, or property, without due process of law; nor deny to any person within its jurisdiction the equal protection of the laws.'",
+            'Eliminating racial discrimination means eliminating all of it.':"New York Times columnist Charles M. Blow described reading this line as, 'like having someone spit in my face.'",
+            'pertinent elements of diversity':"Some writers, including several in the Times, have argued compellingly that the big picture solution to the current crisis of admissions in higher ed is to redesign admissions models with broader 'elements of diversity' in mind, such as those posed by inherited wealth, socioeconomic class, and academic privilege in secondary schools.",
+            'geographic origin':"Many highly selective colleges like Harvard take pride in enrolling at least one student from every US state, and may sway admissions decisions to accomplish that goal.",
+            'A farm boy from Idaho can bring something to Harvard College that a Bostonian cannot offer.':"Again, this plays into the argument that college admissions should be done on an entirely socioeconomic basis, with race-conscious admissions being accused of denying admission to white students from poor families or communities who may share similar economic barriers to higher education with many of their Black and Latino peers.",
+            'Four Justices':"Justices Brennan, White, Marshall, and Blackmun",
+            'Four other Justices':"Justices Burger, Stewart, Rehnquist, and Stevens",
+            'endorse[d] Justice Powell’s view that student body diversity is a compelling state interest that can justify the use of race in university admissions.':"Reed directly echoed this language in the amicus brief it filed before the court during the consideration of this most recent case.",
+            '[A]ll race-conscious admissions programs [must] have a termination point':"The premise here is that eventually race-conscious admissions policies (surely in tandem with further civil rights legislation) will even out the disadvantages minority applicants face and will no longer be necessary. After that point, all college admissions policies can be purely meritocratic. The court has come to the conclusion that America has indeed reached this goal.",
+            'We expect that 25 years from now, the use of racial preferences will no longer be necessary to further the interest approved today.':"The court's most recent opinion was issued almost exactly 20 years after this line was written.",
+            'University programs must comply with strict scrutiny, they may never use race as a stereotype or negative, and—at some point—they must end. Respondents’ admissions systems—however well intentioned and implemented in good faith—fail each of these criteria. They must therefore be invalidated under the Equal Protection Clause of the Fourteenth Amendment.':"This critical line, on its own, utterly changes the admissions process at colleges across the country.",
+            'How many fewer leaders Harvard would create without racial preferences, or how much poorer the education at Harvard would be, are inquiries no court could resolve.':"There's an irony to this. The court is arguing that the fact that the law cannot meaningfully measure when a race-conscious approach has successfully achieved all of these goals – to assert that these goals have actually been reached and so race-conscious admissions is now societally irrelevant.",
+            '(1) Asian; (2) Native Hawaiian or Pacific Islander; (3) Hispanic; (4) White; (5) African American; and (6) Native American.':"Limiting race and ethnicity classification boxes like these have long been contentious in areas broader than college admissions. In 2020, for example, an article for the Pew Research Center stated that, 'The varying ways in which the U.S. government has counted Americans over time offer a glimpse into the country’s past, from the days of slavery to recent waves of immigration. Racial categories, which have been included on every U.S. census since the first one in 1790, have changed from decade to decade, reflecting the politics and science of the times.'",
+            'And still other categories are underinclusive. When asked at oral argument “how are applicants from Middle Eastern countries classified, [such as] Jordan, Iraq, Iran, [and] Egypt,” UNC’s counsel responded, “[I] do not know the answer to that question.”':"Applicants who do not fit neatly into these demographic boxes are left to ponder which demographic association may give them a greater admission advantage (especially mixed race applicants). In addition, how might international students from sub-Saharan Africa be expected to identify? As African American? \n The absurd inadequacy of these categories is also troubling when confronted with the fact that schools seem to use them to measure their own demographic diversity. So not only are they under-inclusive in the application process, but also likely are not giving schools an accurate reading of the ethnic and racial diversity of their own classes. \n Whatever one believes about the court's decision, this is among many instances in which the Harvard and UNC legal strategy actively hurt their own argument.",
+            'But that minority view was just that—a minority view.':"An oddly arrogant assertion here that seems to equate court decisions directly with public opinion. Perhaps a kind of rhetorical legitimizing tactic in the wake of the plainly unpopular Dobbs?",
+            'the University of Texas, whose “goal” it was to enroll a “critical mass” of certain minority students.':"The court really seems to be latching onto the idea that every school in America appears to use different vocabulary to describe the end goal of their race-conscious admissions policy, and that many of them are vague and immeasurable and cannot be adjudicated.",
+            'Separate but equal is “inherently unequal,” said Brown. It depends, says the dissent.':"The majority is really going for the throat – using an unambiguously celebrated and inherently liberal court decision to rhetorically pummel the dissent of the three liberal justices.",
+            'At the same time, as all parties agree, nothing in this opinion should be construed as prohibiting universities from considering an applicant’s discussion of how race affected his or her life, be it through discrimination, inspiration, or otherwise.':"This is perhaps the single most discussed line in the decision, as it implies that colleges may solicit essays from students on race and identity. It is also likely the basis of a new question Reed added to its writing supplement this fall. While the supplement has traditionally consisted of only one question — regarding what class the applicant would teach at Reed's annual Paideia festival — this year applicants will also be asked: 'How might aspects of your identity positively influence the living and learning community at Reed?'",
+            'universities may not simply establish through application essays or other means the regime we hold unlawful today.':"This line, however, explicitly forbids colleges from simply using application essays to carry out affirmative action by another name. If a suit is brought against Reed for its use of the new essay question, it will likely be brought on the basis of this line.",
+            'a piece of underlined text':"Annotations from the editors of the Quest will appear here."
+        };
+
+        var footnotes_dict = {
+            '1': "JUSTICE JACKSON attempts to minimize the role that race plays in UNC’s admissions process by noting that, from 2016–2021, the school accepted a lower “percentage of the most academically excellent in-state Black candidates”—that is, 65 out of 67 such applicants (97.01%)—than it did similarly situated Asian applicants—that is, 1118 out of 1139 such applicants (98.16%). It is not clear how the rejection of just two black applicants over five years could be “indicative of a genuinely holistic [admissions] process,” as JUSTICE JACKSON contends. And indeed it cannot be, as the overall acceptance rates of academically excellent applicants to UNC illustrates full well. According to SFFA’s expert, over 80% of all black applicants in the top academic decile were admitted to UNC, while under 70% of white and Asian applicants in that decile were admitted. In the second highest academic decile, the disparity is even starker: 83% of black applicants were admitted, while 58% of white applicants and 47% of Asian applicants were admitted. And in the third highest decile, 77% of black applicants were admitted, compared to 48% of white applicants and 34% of Asian applicants. The dissent does not dispute the accuracy of these figures. And its contention that white and Asian students “receive a diversity plus” in UNC’s race-based admissions system blinks reality. The same is true at Harvard. See Brief for Petitioner 24 (“[A]n African American [student] in [the fourth lowest academic] decile has a higher chance of admission (12.8%) than an Asian American in the top decile (12.7%).”; see also 4 App. in No. 20–1199, p. 1793 (black applicants in the top four academic deciles are between four and ten times more likely to be admitted to Harvard than Asian applicants in those deciles).",
+            '2':"Title VI provides that “[n]o person in the United States shall, on the ground of race, color, or national origin, be excluded from participation in, be denied the benefits of, or be subjected to discrimination under any program or activity receiving Federal financial assistance.” “We have explained that discrimination that violates the Equal Protection Clause of the Fourteenth Amendment committed by an institution that accepts federal funds also constitutes a violation of Title VI.” Gratz v. Bollinger, (2003). Although JUSTICE GORSUCH questions that proposition, no party asks us to reconsider it. We accordingly evaluate Harvard’s admissions program under the standards of the Equal Protection Clause itself.",
+            '3':"The first time we determined that a governmental racial classification satisfied “the most rigid scrutiny” was 10 years before Brown v. Board of Education, in the infamous case Korematsu v. United States. There, the Court upheld the internment of “all persons of Japanese ancestry in prescribed West Coast . . . areas” during World War II because “the military urgency of the situation demanded” it. We have since overruled Korematsu, recognizing that it was “gravely wrong the day it was decided.” The Court’s decision in Korematsu nevertheless “demonstrates vividly that even the most rigid scrutiny can sometimes fail to detect an illegitimate racial classification” and that “[a]ny retreat from the most searching judicial inquiry can only increase the risk of another such error occurring in the future.” The principal dissent, for its part, claims that the Court has also permitted “the use of race when that use burdens minority populations.” In support of that claim, the dissent cites two cases that have nothing to do with the Equal Protection Clause.",
+            '4':"The United States as amicus curiae contends that race-based admissions programs further compelling interests at our Nation’s military academies. No military academy is a party to these cases, however, and none of the courts below addressed the propriety of race-based admissions systems in that context. This opinion also does not address the issue, in light of the potentially distinct interests that military academies may present.",
+            '5':"For that reason, one dissent candidly advocates abandoning the demands of strict scrutiny. (opinion of JACKSON, J.) (arguing the Court must “get out of the way,” “leav[e] well enough alone,” and defer to universities and “experts” in determining who should be discriminated against). An opinion professing fidelity to history (to say nothing of the law) should surely see the folly in that approach.",
+            '6':"JUSTICE JACKSON contends that race does not play a “determinative role for applicants” to UNC. But even the principal dissent acknowledges that race—and race alone—explains the admissions decisions for hundreds if not thousands of applicants to UNC each year. (opinion of SOTOMAYOR, J.); see also Students for Fair Admissions, Inc. v. University of N. C. at Chapel Hill, ECF Doc. 233, at 23–27 (UNC expert testifying that race explains 1.2% of in state and 5.1% of out of state admissions decisions); 3 App. in No. 21–707, at 1069 (observing that UNC evaluated 57,225 in state applicants and 105,632 out of state applicants from 2016–2021). The suggestion by the principal dissent that our analysis relies on extrarecord materials, (opinion of SOTOMAYOR, J.), is simply mistaken.",
+            '7':"The principal dissent claims that “[t]he fact that Harvard’s racial shares of admitted applicants varies relatively little . . . is unsurprising and reflects the fact that the racial makeup of Harvard’s applicant pool also varies very little over this period.” (opinion of SOTOMAYOR, J.) But that is exactly the point: Harvard must use precise racial preferences year in and year out to maintain the unyielding demographic composition of its class. The dissent is thus left to attack the numbers themselves, arguing they were “handpicked” “from a truncated period.” (opinion of SOTOMAYOR, J.). As supposed proof, the dissent notes that the share of Asian students at Harvard varied significantly from 1980 to 1994—a 14 year period that ended nearly three decades ago. But the relevance of that observation—handpicked and truncated as it is—is lost on us. And the dissent does not and cannot dispute that the share of black and Hispanic students at Harvard—“the primary beneficiaries” of its race-based admissions policy—has remained consistent for decades. For all the talk of holistic and contextual judgments, the racial preferences at issue here in fact operate like clockwork.",
+            '8':'Perhaps recognizing as much, the principal dissent at one point attempts to press a different remedial rationale altogether, stating that both respondents “have sordid legacies of racial exclusion.” (opinion of SOTOMAYOR, J.). Such institutions should perhaps be the very last ones to be allowed to make race-based decisions, let alone be accorded deference in doing so. In any event, neither university defends its admissions system as a remedy for past discrimination—their own or anyone else’s. (“[W]e’re not pursuing any sort of remedial justification for our policy.”). Nor has any decision of ours permitted a remedial justification for race-based college admissions.',
+            '9':"The principal dissent rebukes the Court for not considering adequately the reliance interests respondents and other universities had in Grutter. But as we have explained, Grutter itself limited the reliance that could be placed upon it by insisting, over and over again, that racebased admissions programs be limited in time. Grutter indeed went so far as to suggest a specific period of reliance—25 years— precluding the indefinite reliance interests that the dissent articulates. Those interests are, moreover, vastly overstated on their own terms. Three out of every five American universities do not consider race in their admissions decisions. And several States—including some of the most populous (California, Florida, and Michigan)—have prohibited race-based admissions outright.",
+            '0':"Footnotes from the original opinion will appear here."
+        }
+    </script>
+
+    <script>
+        /* actual script, do not alter */
+        var classname = ".note";
+        var footname = ".footnote";
+
+        var annot_name = ".annotation";
+
+        var footnote_block_name = ".footnote-text";
+
+        var elms=document.querySelectorAll(classname);
+        var footnotes = document.querySelectorAll(footname);
+
+        var annotations = document.querySelectorAll(annot_name);
+        var annotation = annotations[0];
+
+        var footnote_block = document.querySelector(footnote_block_name);
+
+        var annot_paragraph = annotation.querySelector("p");
+
+        if (window.innerWidth > 820) {
+            for(var i=0;i<elms.length;i++){
+                elms[i].onclick = function(){
+            
+                    annotation.style.transitionDuration = "1s";
+                    annotation.style.borderColor = "#eb5e28";
+            
+                    var new_annotation = annotations_dict[this.textContent];
+            
+                    annot_paragraph.textContent = new_annotation;
+            
+                    var annotation_position = annotation.getBoundingClientRect();
+            
+                    var mid_height = annotation_position.height / 2;
+            
+                    var self_position = this.getBoundingClientRect();
+                    var self_y_formatted = self_position.y;
+                    self_y_formatted += window.scrollY;
+                    self_y_formatted = self_y_formatted - mid_height + 10;
+            
+                    self_y_formatted = self_y_formatted.toString();
+                    self_y_formatted = self_y_formatted.concat("px");
+            
+                    annotation.style.top = self_y_formatted;
+            
+                };
+            }
+
+            for(var j=0;j<footnotes.length;j++){
+                footnotes[j].onclick = function(){
+            
+                    annotation.style.transitionDuration = "1s";
+                    annotation.style.borderColor = "black";
+            
+                    var new_annotation = footnotes_dict[this.textContent];
+                    new_annotation = this.textContent.concat("."," ",new_annotation);
+            
+                    annot_paragraph.textContent = new_annotation;
+            
+                    var annotation_position = annotation.getBoundingClientRect();
+            
+                    var mid_height = annotation_position.height / 2;
+            
+                    var self_position = this.getBoundingClientRect();
+                    var self_y_formatted = self_position.y;
+                    self_y_formatted += window.scrollY;
+                    self_y_formatted = self_y_formatted - mid_height + 10;
+            
+                    self_y_formatted = self_y_formatted.toString();
+                    self_y_formatted = self_y_formatted.concat("px");
+            
+                    annotation.style.top = self_y_formatted;
+            
+                };
+            }
+            
+            if (elms.length > 0) {
+                annotation.style.transitionDuration = "0s";
+            
+                var curr = elms[0];
+            
+                var new_annotation = annotations_dict[curr.textContent];
+            
+                annot_paragraph.textContent = new_annotation;
+            
+                var annotation_position = annotation.getBoundingClientRect();
+            
+                var mid_height = annotation_position.height / 2;
+            
+                var self_position = curr.getBoundingClientRect();
+                var self_y_formatted = self_position.y;
+                self_y_formatted += window.scrollY;
+                self_y_formatted = self_y_formatted - mid_height + 10;
+            
+                self_y_formatted = self_y_formatted.toString();
+                self_y_formatted = self_y_formatted.concat("px");
+            
+                annotation.style.top = self_y_formatted;
+            }
+        } else {
+            annotation.style.maxHeight = "0px";
+            for(var i=0;i<elms.length;i++){
+                elms[i].onclick = function(){
+
+                    if (parseFloat(annotation.style.maxHeight) > 0) {
+                        annotation.style.maxHeight = "0px";
+                    } else {
+                        var new_annotation = annotations_dict[this.textContent];
+            
+                        annot_paragraph.textContent = new_annotation;
+
+                        annotation.style.maxHeight = "500px";
+                    }
+            
+                    annotation.style.transitionDuration = "1s";
+            
+                };
+            }
+
+            addEventListener("scroll", (event) => {});
+
+            onscroll = (event) => {
+                annotation.style.maxHeight = "0px";
+            };
+        }
+    </script>
+</body>
+</html>
